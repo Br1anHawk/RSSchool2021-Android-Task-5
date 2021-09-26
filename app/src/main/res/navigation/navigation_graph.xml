@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.rsschool2021_android_task_5.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_recyclerViewCatImagesFragment"
+            app:destination="@id/recyclerViewCatImagesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recyclerViewCatImagesFragment"
+        android:name="com.example.rsschool2021_android_task_5.overview_cats.RecyclerViewCatImagesFragment"
+        android:label="fragment_recycler_view_cat_images"
+        tools:layout="@layout/fragment_recycler_view_cat_images" >
+        <action
+            android:id="@+id/action_recyclerViewCatImagesFragment_to_detailedCatInfoFragment"
+            app:destination="@id/detailedCatInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailedCatInfoFragment"
+        android:name="com.example.rsschool2021_android_task_5.overview_cats.DetailedCatInfoFragment"
+        android:label="fragment_detailed_cat_info"
+        tools:layout="@layout/fragment_detailed_cat_info" >
+        <argument
+            android:name="catsProperty"
+            app:argType="com.example.rsschool2021_android_task_5.network.CatsProperty" />
+    </fragment>
+</navigation>

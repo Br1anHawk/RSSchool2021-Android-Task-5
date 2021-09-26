@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">The Cats</string>
+
+    <string name="button_open_list_of_cat_images">Open</string>
+
+    <string name="label_cat_temperament">Temperament</string>
+    <string name="label_cat_origin">Origin:</string>
+    <string name="label_cat_life_span">Life span:</string>
+    <string name="label_cat_description">Description</string>
+</resources>
