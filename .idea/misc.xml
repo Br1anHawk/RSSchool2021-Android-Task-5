@@ -10,7 +10,7 @@
         <entry key="app/src/main/res/drawable/ic_save_on_device_image.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/loading_img.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.12817028985507245" />
-        <entry key="app/src/main/res/layout/card_for_cat_item_container.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/card_for_cat_item_container.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_detailed_cat_info.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.12817028985507245" />
         <entry key="app/src/main/res/layout/fragment_recycler_view_cat_images.xml" value="0.14" />

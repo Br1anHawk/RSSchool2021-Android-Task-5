@@ -15,14 +15,14 @@ class CatsPropertyViewHolder private constructor(
     private val listener: RecyclerViewCatImagesListener
 ): RecyclerView.ViewHolder(binding.root) {
     fun bind(catsProperty: CatsProperty?) {
-        if (catsProperty == null) {
-            return
-        }
+        catsProperty ?: return
         val imgUri = catsProperty.url.toUri().buildUpon().scheme("https").build()
         Glide.with(binding.imageView.context)
             .load(imgUri)
             .apply(
                 RequestOptions()
+                    .centerCrop()
+                    .circleCrop()
                     .placeholder(R.drawable.loading_animation)
                     .error(R.drawable.ic_broken_image))
             .into(binding.imageView)

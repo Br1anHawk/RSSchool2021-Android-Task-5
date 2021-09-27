@@ -73,4 +73,5 @@ dependencies {
     // Pagination
     def pagingVersion = "3.0.1"
     implementation "androidx.paging:paging-runtime-ktx:$pagingVersion"
+
 }
