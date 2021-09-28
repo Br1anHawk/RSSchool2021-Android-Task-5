@@ -79,6 +79,24 @@ class DetailedCatInfoFragment : Fragment() {
                 textViewCatDescription.text = breed.description
                 ratingBarCatAdaptability.rating = breed.adaptability.toFloat()
 
+                ratingBarCatAffectionLevel.rating = breed.affection_level.toFloat()
+                ratingBarCatChildFriendly.rating = breed.child_friendly.toFloat()
+                ratingBarCatDogFriendly.rating = breed.dog_friendly.toFloat()
+                ratingBarCatEnergyLevel.rating = breed.energy_level.toFloat()
+                ratingBarCatGrooming.rating = breed.grooming.toFloat()
+                ratingBarCatHealthIssues.rating = breed.health_issues.toFloat()
+                ratingBarCatIntelligence.rating = breed.intelligence.toFloat()
+                ratingBarCatSheddingLevel.rating = breed.shedding_level.toFloat()
+                ratingBarCatSocialNeeds.rating = breed.social_needs.toFloat()
+                ratingBarCatStrangerFriendly.rating = breed.stranger_friendly.toFloat()
+                ratingBarCatVocalisation.rating = breed.vocalisation.toFloat()
+                ratingBarCatExperimental.rating = breed.experimental.toFloat()
+                ratingBarCatHairless.rating = breed.hairless.toFloat()
+                ratingBarCatNatural.rating = breed.natural.toFloat()
+                ratingBarCatRare.rating = breed.rare.toFloat()
+                ratingBarCatRex.rating = breed.rex.toFloat()
+                ratingBarCatSuppressedTail.rating = breed.suppressed_tail.toFloat()
+                ratingBarCatShortLegs.rating = breed.short_legs.toFloat()
             }
         }
 

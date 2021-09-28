@@ -76,7 +76,7 @@
 
                 <TextView
                     android:id="@+id/text_view_cat_temperament"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/views_margin"
                     android:textSize="@dimen/description_text_size"
@@ -375,7 +375,7 @@
                 <RatingBar
                     android:id="@+id/rating_bar_cat_stranger_friendly"
                     style="@style/Widget.AppCompat.RatingBar.Indicator"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/views_margin"
                     android:progressTint="?attr/colorPrimary"
