@@ -67,11 +67,17 @@ class DetailedCatInfoFragment : Fragment() {
         with(binding) {
             if (catsProperty.breeds.isNotEmpty()) {
                 val breed = catsProperty.breeds[0]
-                textViewCatName.text = "${breed.name}\n(\"${breed.alt_names}\")"
+                textViewCatName.text = breed.name
+                if (breed.alt_names.isEmpty()) {
+                    textViewCatAltName.visibility = View.GONE
+                } else {
+                    textViewCatAltName.text = "\"${breed.alt_names}\""
+                }
                 textViewCatTemperament.text = breed.temperament
                 textViewCatOrigin.text = breed.origin
                 textViewCatLifeSpan.text = breed.life_span
                 textViewCatDescription.text = breed.description
+                ratingBarCatAdaptability.rating = breed.adaptability.toFloat()
 
             }
         }

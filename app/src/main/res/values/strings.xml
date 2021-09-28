@@ -3,8 +3,28 @@
 
     <string name="button_open_list_of_cat_images">Open</string>
 
-    <string name="label_cat_temperament">Temperament</string>
+    <string name="label_cat_temperament">Temperament:</string>
     <string name="label_cat_origin">Origin:</string>
     <string name="label_cat_life_span">Life span:</string>
     <string name="label_cat_description">Description</string>
+
+    <string name="label_cat_adaptability">Adaptability:</string>
+    <string name="label_cat_affection_level">Affection level:</string>
+    <string name="label_cat_child_friendly">Child friendly:</string>
+    <string name="label_cat_dog_friendly">Dog friendly:</string>
+    <string name="label_cat_energy_level">Energy level:</string>
+    <string name="label_cat_grooming">Grooming:</string>
+    <string name="label_cat_health_issues">Health issues:</string>
+    <string name="label_cat_intelligence">Intelligence:</string>
+    <string name="label_cat_shedding_level">Shedding level:</string>
+    <string name="label_cat_social_needs">Social needs:</string>
+    <string name="label_cat_stranger_friendly">Stranger friendly:</string>
+    <string name="label_cat_vocalisation">Vocalisation:</string>
+    <string name="label_cat_experimental">Experimental:</string>
+    <string name="label_cat_hairless">Hairless:</string>
+    <string name="label_cat_natural">Natural:</string>
+    <string name="label_cat_rare">Rare:</string>
+    <string name="label_cat_rex">Rex:</string>
+    <string name="label_cat_suppressed_tail">Suppressed tail:</string>
+    <string name="label_cat_short_legs">Short legs:</string>
 </resources>

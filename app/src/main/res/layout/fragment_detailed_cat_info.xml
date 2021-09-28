@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/image_view"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -28,55 +28,70 @@
         android:id="@+id/text_view_cat_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/text_size"
+        android:textSize="@dimen/headers_text_size"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_save_image_on_device" />
+        app:layout_constraintTop_toBottomOf="@+id/button_save_image_on_device"
+        tools:text="Cat name" />
+
+    <TextView
+        android:id="@+id/text_view_cat_alt_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/description_text_size"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_cat_name"
+        tools:text="Alt cat name" />
 
     <TextView
         android:id="@+id/label_cat_temperament"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:text="@string/label_cat_temperament"
-        android:textSize="@dimen/text_size"
+        android:textSize="@dimen/headers_text_size"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_cat_name" />
+        app:layout_constraintTop_toBottomOf="@+id/text_view_cat_alt_name" />
 
     <TextView
         android:id="@+id/text_view_cat_temperament"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:textSize="@dimen/text_size"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/label_cat_temperament"
-        tools:text="temperament"/>
+        android:textSize="@dimen/description_text_size"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@+id/label_cat_temperament"
+        app:layout_constraintStart_toEndOf="@+id/label_cat_temperament"
+        app:layout_constraintTop_toTopOf="@+id/label_cat_temperament"
+        tools:text="temperament" />
 
     <TextView
         android:id="@+id/label_cat_origin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/label_cat_origin"
-        android:textSize="@dimen/text_size"
+        android:textSize="@dimen/headers_text_size"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_cat_temperament" />
+        app:layout_constraintTop_toBottomOf="@+id/label_cat_temperament" />
 
     <TextView
         android:id="@+id/text_view_cat_origin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/text_size"
+        android:textSize="@dimen/description_text_size"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@+id/label_cat_origin"
         app:layout_constraintStart_toEndOf="@+id/label_cat_origin"
         app:layout_constraintTop_toTopOf="@+id/label_cat_origin"
-        tools:text="origin"/>
+        tools:text="origin" />
 
     <TextView
         android:id="@+id/label_cat_life_span"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/label_cat_life_span"
-        android:textSize="@dimen/text_size"
+        android:textSize="@dimen/headers_text_size"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/label_cat_origin" />
 
@@ -84,17 +99,20 @@
         android:id="@+id/text_view_cat_life_span"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/text_size"
+        android:textSize="@dimen/description_text_size"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@+id/label_cat_life_span"
         app:layout_constraintStart_toEndOf="@+id/label_cat_life_span"
         app:layout_constraintTop_toTopOf="@+id/label_cat_life_span"
-        tools:text="life span"/>
+        tools:text="life span" />
 
     <TextView
         android:id="@+id/label_cat_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/label_cat_description"
-        android:textSize="@dimen/text_size"
+        android:textSize="@dimen/headers_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/label_cat_life_span" />
 
@@ -102,8 +120,65 @@
         android:id="@+id/text_view_cat_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/text_size"
+        android:textSize="@dimen/description_text_size"
+        android:textStyle="italic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/label_cat_description"
-        tools:text="description"/>
+        tools:text="description" />
+
+    <TextView
+        android:id="@+id/label_cat_adaptability"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/headers_text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_cat_description"
+        android:text="@string/label_cat_adaptability" />
+
+    <RatingBar
+        android:id="@+id/rating_bar_cat_adaptability"
+        style="@style/Widget.AppCompat.RatingBar.Indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:progressTint="?attr/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/label_cat_adaptability"
+        app:layout_constraintStart_toEndOf="@+id/label_cat_adaptability"
+        app:layout_constraintTop_toTopOf="@+id/label_cat_adaptability"
+        tools:rating="3" />
+
+    <TextView
+        android:id="@+id/label_cat_affection_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/label_cat_affection_level"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label_cat_adaptability" />
+
+    <RatingBar
+        android:id="@+id/rating_bar_cat_affection_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/label_cat_affection_level"
+        app:layout_constraintStart_toEndOf="@+id/label_cat_affection_level"
+        app:layout_constraintTop_toTopOf="@+id/label_cat_affection_level" />
+
+    <TextView
+        android:id="@+id/label_cat_child_friendly"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="51dp"
+        android:text="@string/label_cat_child_friendly"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label_cat_affection_level" />
+
+    <RatingBar
+        android:id="@+id/rating_bar_cat_child_friendly"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/label_cat_child_friendly"
+        app:layout_constraintStart_toEndOf="@+id/label_cat_child_friendly"
+        app:layout_constraintTop_toTopOf="@+id/label_cat_child_friendly" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
