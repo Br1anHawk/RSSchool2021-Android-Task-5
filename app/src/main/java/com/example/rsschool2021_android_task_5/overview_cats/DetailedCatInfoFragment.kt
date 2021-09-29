@@ -21,6 +21,12 @@ import android.graphics.drawable.BitmapDrawable
 import android.util.Log
 import androidx.core.graphics.drawable.toBitmap
 import java.lang.Exception
+import android.net.Uri
+
+import android.content.Intent
+
+
+
 
 
 class DetailedCatInfoFragment : Fragment() {
@@ -41,7 +47,7 @@ class DetailedCatInfoFragment : Fragment() {
             .apply(
                 RequestOptions()
                     .placeholder(R.drawable.loading_animation)
-                    .error(R.drawable.ic_broken_image))
+                    .error(R.drawable.ic_cat_broken_image))
             .into(binding.imageView)
 
         binding.buttonSaveImageOnDevice.setOnClickListener {
@@ -97,6 +103,14 @@ class DetailedCatInfoFragment : Fragment() {
                 ratingBarCatRex.rating = breed.rex.toFloat()
                 ratingBarCatSuppressedTail.rating = breed.suppressed_tail.toFloat()
                 ratingBarCatShortLegs.rating = breed.short_legs.toFloat()
+
+
+
+                imageViewCatWikipediaInfo.setOnClickListener {
+                    val implicitInternetWebSiteOpenIntent = Intent(Intent.ACTION_VIEW)
+                    implicitInternetWebSiteOpenIntent.data = Uri.parse(breed.wikipedia_url)
+                    startActivity(implicitInternetWebSiteOpenIntent)
+                }
             }
         }
 

@@ -25,31 +25,45 @@
 
                 <ImageView
                     android:id="@+id/image_view"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_margin="@dimen/views_margin"
+                    android:adjustViewBounds="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@tools:sample/avatars" />
 
-                <Button
+
+                <ImageView
                     android:id="@+id/button_save_image_on_device"
                     android:layout_width="@dimen/button_save_image_on_device_width"
                     android:layout_height="@dimen/button_save_image_on_device_height"
+                    android:layout_margin="@dimen/views_margin"
                     android:background="@drawable/ic_save_on_device_image"
+                    app:layout_constraintEnd_toEndOf="@+id/image_view"
+                    app:layout_constraintTop_toTopOf="@+id/image_view" />
+
+                <ImageView
+                    android:id="@+id/image_view_cat_wikipedia_info"
+                    android:layout_width="@dimen/image_view_cat_wikipedia_info_width"
+                    android:layout_height="@dimen/image_view_cat_wikipedia_info_height"
+                    android:layout_margin="@dimen/views_margin"
                     app:layout_constraintBottom_toBottomOf="@+id/image_view"
-                    app:layout_constraintEnd_toEndOf="@+id/image_view" />
+                    app:layout_constraintEnd_toEndOf="@+id/image_view"
+                    app:layout_constraintTop_toBottomOf="@+id/image_view"
+                    app:srcCompat="@drawable/ic_wikipedia_logo" />
 
                 <TextView
                     android:id="@+id/text_view_cat_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/views_margin"
-                    android:textSize="@dimen/headers_text_size"
+                    android:textSize="@dimen/headers_main_info_label_text_size"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/button_save_image_on_device"
+                    app:layout_constraintTop_toBottomOf="@+id/image_view"
                     tools:text="Cat name" />
 
                 <TextView
@@ -70,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/views_margin"
                     android:text="@string/label_cat_temperament"
-                    android:textSize="@dimen/headers_text_size"
+                    android:textSize="@dimen/headers_main_info_label_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/text_view_cat_alt_name" />
 
@@ -91,7 +105,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/views_margin"
                     android:text="@string/label_cat_origin"
-                    android:textSize="@dimen/headers_text_size"
+                    android:textSize="@dimen/headers_main_info_label_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/text_view_cat_temperament" />
 
@@ -113,7 +127,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/views_margin"
                     android:text="@string/label_cat_life_span"
-                    android:textSize="@dimen/headers_text_size"
+                    android:textSize="@dimen/headers_main_info_label_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/label_cat_origin" />
 
@@ -135,7 +149,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/views_margin"
                     android:text="@string/label_cat_description"
-                    android:textSize="@dimen/headers_text_size"
+                    android:textSize="@dimen/headers_main_info_label_text_size"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/label_cat_life_span" />
@@ -157,7 +171,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/views_margin"
                     android:text="@string/label_cat_adaptability"
-                    android:textSize="@dimen/headers_text_size"
+                    android:textSize="@dimen/headers_rating_info_label_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/text_view_cat_description" />
 
@@ -169,7 +183,7 @@
                     android:layout_margin="@dimen/views_margin"
                     android:progressTint="?attr/colorPrimary"
                     app:layout_constraintBottom_toBottomOf="@+id/label_cat_adaptability"
-                    app:layout_constraintStart_toEndOf="@+id/label_cat_adaptability"
+                    app:layout_constraintStart_toEndOf="@+id/guideline_rating_bars_begin"
                     app:layout_constraintTop_toTopOf="@+id/label_cat_adaptability"
                     tools:rating="3" />
 
@@ -179,7 +193,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/views_margin"
                     android:text="@string/label_cat_affection_level"
-                    android:textSize="@dimen/headers_text_size"
+                    android:textSize="@dimen/headers_rating_info_label_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/label_cat_adaptability" />
 
@@ -191,7 +205,7 @@
                     android:layout_margin="@dimen/views_margin"
                     android:progressTint="?attr/colorPrimary"
                     app:layout_constraintBottom_toBottomOf="@+id/label_cat_affection_level"
-                    app:layout_constraintStart_toEndOf="@+id/label_cat_affection_level"
+                    app:layout_constraintStart_toEndOf="@+id/guideline_rating_bars_begin"
                     app:layout_constraintTop_toTopOf="@+id/label_cat_affection_level" />
 
                 <TextView
@@ -200,7 +214,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/views_margin"
                     android:text="@string/label_cat_child_friendly"
-                    android:textSize="@dimen/headers_text_size"
+                    android:textSize="@dimen/headers_rating_info_label_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/label_cat_affection_level" />
 
@@ -212,7 +226,7 @@
                     android:layout_margin="@dimen/views_margin"
                     android:progressTint="?attr/colorPrimary"
                     app:layout_constraintBottom_toBottomOf="@+id/label_cat_child_friendly"
-                    app:layout_constraintStart_toEndOf="@+id/label_cat_child_friendly"
+                    app:layout_constraintStart_toEndOf="@+id/guideline_rating_bars_begin"
                     app:layout_constraintTop_toTopOf="@+id/label_cat_child_friendly" />
 
                 <TextView
@@ -221,7 +235,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/views_margin"
                     android:text="@string/label_cat_dog_friendly"
-                    android:textSize="@dimen/headers_text_size"
+                    android:textSize="@dimen/headers_rating_info_label_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/label_cat_child_friendly" />
 
@@ -233,7 +247,7 @@
                     android:layout_margin="@dimen/views_margin"
                     android:progressTint="?attr/colorPrimary"
                     app:layout_constraintBottom_toBottomOf="@+id/label_cat_dog_friendly"
-                    app:layout_constraintStart_toEndOf="@+id/label_cat_dog_friendly"
+                    app:layout_constraintStart_toEndOf="@+id/guideline_rating_bars_begin"
                     app:layout_constraintTop_toTopOf="@+id/label_cat_dog_friendly" />
 
                 <TextView
@@ -242,7 +256,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/views_margin"
                     android:text="@string/label_cat_energy_level"
-                    android:textSize="@dimen/headers_text_size"
+                    android:textSize="@dimen/headers_rating_info_label_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/label_cat_dog_friendly" />
 
@@ -254,7 +268,7 @@
                     android:layout_margin="@dimen/views_margin"
                     android:progressTint="?attr/colorPrimary"
                     app:layout_constraintBottom_toBottomOf="@+id/label_cat_energy_level"
-                    app:layout_constraintStart_toEndOf="@+id/label_cat_energy_level"
+                    app:layout_constraintStart_toEndOf="@+id/guideline_rating_bars_begin"
                     app:layout_constraintTop_toTopOf="@+id/label_cat_energy_level" />
 
                 <TextView
@@ -263,7 +277,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/views_margin"
                     android:text="@string/label_cat_grooming"
-                    android:textSize="@dimen/headers_text_size"
+                    android:textSize="@dimen/headers_rating_info_label_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/label_cat_energy_level" />
 
@@ -275,7 +289,7 @@
                     android:layout_margin="@dimen/views_margin"
                     android:progressTint="?attr/colorPrimary"
                     app:layout_constraintBottom_toBottomOf="@+id/label_cat_grooming"
-                    app:layout_constraintStart_toEndOf="@+id/label_cat_grooming"
+                    app:layout_constraintStart_toEndOf="@+id/guideline_rating_bars_begin"
                     app:layout_constraintTop_toTopOf="@+id/label_cat_grooming" />
 
                 <TextView
@@ -284,7 +298,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/views_margin"
                     android:text="@string/label_cat_health_issues"
-                    android:textSize="@dimen/headers_text_size"
+                    android:textSize="@dimen/headers_rating_info_label_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/label_cat_grooming" />
 
@@ -296,7 +310,7 @@
                     android:layout_margin="@dimen/views_margin"
                     android:progressTint="?attr/colorPrimary"
                     app:layout_constraintBottom_toBottomOf="@+id/label_cat_health_issues"
-                    app:layout_constraintStart_toEndOf="@+id/label_cat_health_issues"
+                    app:layout_constraintStart_toEndOf="@+id/guideline_rating_bars_begin"
                     app:layout_constraintTop_toTopOf="@+id/label_cat_health_issues" />
 
                 <TextView
@@ -305,7 +319,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/views_margin"
                     android:text="@string/label_cat_intelligence"
-                    android:textSize="@dimen/headers_text_size"
+                    android:textSize="@dimen/headers_rating_info_label_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/label_cat_health_issues" />
 
@@ -317,7 +331,7 @@
                     android:layout_margin="@dimen/views_margin"
                     android:progressTint="?attr/colorPrimary"
                     app:layout_constraintBottom_toBottomOf="@+id/label_cat_intelligence"
-                    app:layout_constraintStart_toEndOf="@+id/label_cat_intelligence"
+                    app:layout_constraintStart_toEndOf="@+id/guideline_rating_bars_begin"
                     app:layout_constraintTop_toTopOf="@+id/label_cat_intelligence" />
 
                 <TextView
@@ -326,7 +340,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/views_margin"
                     android:text="@string/label_cat_shedding_level"
-                    android:textSize="@dimen/headers_text_size"
+                    android:textSize="@dimen/headers_rating_info_label_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/label_cat_intelligence" />
 
@@ -338,7 +352,7 @@
                     android:layout_margin="@dimen/views_margin"
                     android:progressTint="?attr/colorPrimary"
                     app:layout_constraintBottom_toBottomOf="@+id/label_cat_shedding_level"
-                    app:layout_constraintStart_toEndOf="@+id/label_cat_shedding_level"
+                    app:layout_constraintStart_toEndOf="@+id/guideline_rating_bars_begin"
                     app:layout_constraintTop_toTopOf="@+id/label_cat_shedding_level" />
 
                 <TextView
@@ -347,7 +361,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/views_margin"
                     android:text="@string/label_cat_social_needs"
-                    android:textSize="@dimen/headers_text_size"
+                    android:textSize="@dimen/headers_rating_info_label_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/label_cat_shedding_level" />
 
@@ -359,7 +373,7 @@
                     android:layout_margin="@dimen/views_margin"
                     android:progressTint="?attr/colorPrimary"
                     app:layout_constraintBottom_toBottomOf="@+id/label_cat_social_needs"
-                    app:layout_constraintStart_toEndOf="@+id/label_cat_social_needs"
+                    app:layout_constraintStart_toEndOf="@+id/guideline_rating_bars_begin"
                     app:layout_constraintTop_toTopOf="@+id/label_cat_social_needs" />
 
                 <TextView
@@ -368,7 +382,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/views_margin"
                     android:text="@string/label_cat_stranger_friendly"
-                    android:textSize="@dimen/headers_text_size"
+                    android:textSize="@dimen/headers_rating_info_label_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/label_cat_social_needs" />
 
@@ -380,7 +394,7 @@
                     android:layout_margin="@dimen/views_margin"
                     android:progressTint="?attr/colorPrimary"
                     app:layout_constraintBottom_toBottomOf="@+id/label_cat_stranger_friendly"
-                    app:layout_constraintStart_toEndOf="@+id/label_cat_stranger_friendly"
+                    app:layout_constraintStart_toEndOf="@+id/guideline_rating_bars_begin"
                     app:layout_constraintTop_toTopOf="@+id/label_cat_stranger_friendly" />
 
                 <TextView
@@ -389,7 +403,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/views_margin"
                     android:text="@string/label_cat_vocalisation"
-                    android:textSize="@dimen/headers_text_size"
+                    android:textSize="@dimen/headers_rating_info_label_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/label_cat_stranger_friendly" />
 
@@ -401,7 +415,7 @@
                     android:layout_margin="@dimen/views_margin"
                     android:progressTint="?attr/colorPrimary"
                     app:layout_constraintBottom_toBottomOf="@+id/label_cat_vocalisation"
-                    app:layout_constraintStart_toEndOf="@+id/label_cat_vocalisation"
+                    app:layout_constraintStart_toEndOf="@+id/guideline_rating_bars_begin"
                     app:layout_constraintTop_toTopOf="@+id/label_cat_vocalisation" />
 
                 <TextView
@@ -410,7 +424,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/views_margin"
                     android:text="@string/label_cat_experimental"
-                    android:textSize="@dimen/headers_text_size"
+                    android:textSize="@dimen/headers_rating_info_label_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/label_cat_vocalisation" />
 
@@ -422,7 +436,7 @@
                     android:layout_margin="@dimen/views_margin"
                     android:progressTint="?attr/colorPrimary"
                     app:layout_constraintBottom_toBottomOf="@+id/label_cat_experimental"
-                    app:layout_constraintStart_toEndOf="@+id/label_cat_experimental"
+                    app:layout_constraintStart_toEndOf="@+id/guideline_rating_bars_begin"
                     app:layout_constraintTop_toTopOf="@+id/label_cat_experimental" />
 
                 <TextView
@@ -431,7 +445,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/views_margin"
                     android:text="@string/label_cat_hairless"
-                    android:textSize="@dimen/headers_text_size"
+                    android:textSize="@dimen/headers_rating_info_label_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/label_cat_experimental" />
 
@@ -443,7 +457,7 @@
                     android:layout_margin="@dimen/views_margin"
                     android:progressTint="?attr/colorPrimary"
                     app:layout_constraintBottom_toBottomOf="@+id/label_cat_hairless"
-                    app:layout_constraintStart_toEndOf="@+id/label_cat_hairless"
+                    app:layout_constraintStart_toEndOf="@+id/guideline_rating_bars_begin"
                     app:layout_constraintTop_toTopOf="@+id/label_cat_hairless" />
 
                 <TextView
@@ -452,7 +466,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/views_margin"
                     android:text="@string/label_cat_natural"
-                    android:textSize="@dimen/headers_text_size"
+                    android:textSize="@dimen/headers_rating_info_label_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/rating_bar_cat_hairless" />
 
@@ -465,7 +479,7 @@
                     android:layout_marginStart="7dp"
                     android:progressTint="?attr/colorPrimary"
                     app:layout_constraintBottom_toBottomOf="@+id/label_cat_natural"
-                    app:layout_constraintStart_toEndOf="@+id/label_cat_natural"
+                    app:layout_constraintStart_toEndOf="@+id/guideline_rating_bars_begin"
                     app:layout_constraintTop_toTopOf="@+id/label_cat_natural" />
 
                 <TextView
@@ -474,7 +488,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/views_margin"
                     android:text="@string/label_cat_rare"
-                    android:textSize="@dimen/headers_text_size"
+                    android:textSize="@dimen/headers_rating_info_label_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/rating_bar_cat_natural" />
 
@@ -487,7 +501,7 @@
                     android:layout_marginStart="1dp"
                     android:progressTint="?attr/colorPrimary"
                     app:layout_constraintBottom_toBottomOf="@+id/label_cat_rare"
-                    app:layout_constraintStart_toEndOf="@+id/label_cat_rare"
+                    app:layout_constraintStart_toEndOf="@+id/guideline_rating_bars_begin"
                     app:layout_constraintTop_toTopOf="@+id/label_cat_rare" />
 
                 <TextView
@@ -496,7 +510,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/views_margin"
                     android:text="@string/label_cat_rex"
-                    android:textSize="@dimen/headers_text_size"
+                    android:textSize="@dimen/headers_rating_info_label_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/rating_bar_cat_rare" />
 
@@ -508,7 +522,7 @@
                     android:layout_margin="@dimen/views_margin"
                     android:progressTint="?attr/colorPrimary"
                     app:layout_constraintBottom_toBottomOf="@+id/label_cat_rex"
-                    app:layout_constraintStart_toEndOf="@+id/label_cat_rex"
+                    app:layout_constraintStart_toEndOf="@+id/guideline_rating_bars_begin"
                     app:layout_constraintTop_toTopOf="@+id/label_cat_rex" />
 
                 <TextView
@@ -517,7 +531,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/views_margin"
                     android:text="@string/label_cat_suppressed_tail"
-                    android:textSize="@dimen/headers_text_size"
+                    android:textSize="@dimen/headers_rating_info_label_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/rating_bar_cat_rex" />
 
@@ -529,7 +543,7 @@
                     android:layout_margin="@dimen/views_margin"
                     android:progressTint="?attr/colorPrimary"
                     app:layout_constraintBottom_toBottomOf="@+id/label_cat_suppressed_tail"
-                    app:layout_constraintStart_toEndOf="@+id/label_cat_suppressed_tail"
+                    app:layout_constraintStart_toEndOf="@+id/guideline_rating_bars_begin"
                     app:layout_constraintTop_toTopOf="@+id/label_cat_suppressed_tail" />
 
                 <TextView
@@ -538,7 +552,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/views_margin"
                     android:text="@string/label_cat_short_legs"
-                    android:textSize="@dimen/headers_text_size"
+                    android:textSize="@dimen/headers_rating_info_label_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/label_cat_suppressed_tail" />
 
@@ -550,9 +564,15 @@
                     android:layout_margin="@dimen/views_margin"
                     android:progressTint="?attr/colorPrimary"
                     app:layout_constraintBottom_toBottomOf="@+id/label_cat_short_legs"
-                    app:layout_constraintStart_toEndOf="@+id/label_cat_short_legs"
+                    app:layout_constraintStart_toEndOf="@+id/guideline_rating_bars_begin"
                     app:layout_constraintTop_toTopOf="@+id/label_cat_short_legs" />
 
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline_rating_bars_begin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="165dp" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>

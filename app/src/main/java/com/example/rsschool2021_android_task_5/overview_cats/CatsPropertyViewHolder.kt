@@ -24,7 +24,7 @@ class CatsPropertyViewHolder private constructor(
                     .centerCrop()
                     .circleCrop()
                     .placeholder(R.drawable.loading_animation)
-                    .error(R.drawable.ic_broken_image))
+                    .error(R.drawable.ic_cat_broken_image))
             .into(binding.imageView)
 
         binding.imageView.setOnClickListener {

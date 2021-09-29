@@ -2,11 +2,15 @@
 <resources>
     <dimen name="card_for_cat_item_container_height">150dp</dimen>
 
-    <dimen name="headers_text_size">24sp</dimen>
+    <dimen name="headers_main_info_label_text_size">24sp</dimen>
+    <dimen name="headers_rating_info_label_text_size">21sp</dimen>
     <dimen name="description_text_size">18sp</dimen>
 
     <dimen name="button_save_image_on_device_width">50dp</dimen>
     <dimen name="button_save_image_on_device_height">50dp</dimen>
+
+    <dimen name="image_view_cat_wikipedia_info_width">50dp</dimen>
+    <dimen name="image_view_cat_wikipedia_info_height">50dp</dimen>
 
     <dimen name="views_margin">5dp</dimen>
 </resources>

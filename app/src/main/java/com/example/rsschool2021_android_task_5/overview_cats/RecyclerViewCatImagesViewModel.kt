@@ -30,13 +30,13 @@ class RecyclerViewCatImagesViewModel : ViewModel() {
     val properties: LiveData<List<CatsProperty>>
         get() = _properties
 
-    val data: StateFlow<PagingData<CatsProperty>> = Pager(PagingConfig(pageSize = COUNT_OF_CAT_IMAGES_REQUEST_FROM_API)) {
+    val dataFlowCatsProperty: StateFlow<PagingData<CatsProperty>> = Pager(PagingConfig(pageSize = COUNT_OF_CAT_IMAGES_REQUEST_FROM_API)) {
         PagingSource(CatsApi.retrofitService)
     }.flow
         .stateIn(viewModelScope, SharingStarted.Lazily, PagingData.empty())
 
     init {
-        getCatProperties()
+        //getCatProperties()
     }
 
     private fun getCatProperties() {

@@ -8,5 +8,5 @@ import kotlinx.android.parcel.RawValue
 data class CatsProperty (
         val id: String = "",
         val url: String = "",
-        val breeds: @RawValue List<Breed> = listOf()
+        val breeds: List<Breed> = listOf()
 ): Parcelable

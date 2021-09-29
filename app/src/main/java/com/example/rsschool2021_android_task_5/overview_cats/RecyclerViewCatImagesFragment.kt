@@ -13,7 +13,6 @@ import com.example.rsschool2021_android_task_5.SPAN_COUNT_FOR_GRID_LAYOUT_MANAGE
 import com.example.rsschool2021_android_task_5.databinding.FragmentRecyclerViewCatImagesBinding
 import com.example.rsschool2021_android_task_5.network.CatsApiStatus
 import com.example.rsschool2021_android_task_5.network.CatsProperty
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -31,17 +30,19 @@ class RecyclerViewCatImagesFragment : Fragment(), RecyclerViewCatImagesListener 
 
     private val _lifecycleCoroutineScopeJob by lazy {
         lifecycleScope.launch {
-            lifecycle.repeatOnLifecycle(Lifecycle.State.CREATED) {
-                recyclerViewCatImagesViewModel.data.collectLatest {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.CREATED) {
+                recyclerViewCatImagesViewModel.dataFlowCatsProperty.collectLatest {
                     recyclerViewCatImagesAdapter.submitData(it)
                 }
             }
         }
     }
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _lifecycleCoroutineScopeJob.start()
+        //_lifecycleCoroutineScopeJob.start()
     }
 
     override fun onCreateView(
@@ -49,6 +50,9 @@ class RecyclerViewCatImagesFragment : Fragment(), RecyclerViewCatImagesListener 
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
+        _lifecycleCoroutineScopeJob.start()
+
         _binding = FragmentRecyclerViewCatImagesBinding.inflate(inflater, container, false)
 
         binding.recyclerViewCatImages.apply {
@@ -56,16 +60,16 @@ class RecyclerViewCatImagesFragment : Fragment(), RecyclerViewCatImagesListener 
             adapter = recyclerViewCatImagesAdapter
         }
 
-        recyclerViewCatImagesViewModel.status.observe(viewLifecycleOwner, {
-            it.let {
-                binding.imageViewStatusConnection.visibility = View.VISIBLE
-                when(it) {
-                    CatsApiStatus.LOADING -> binding.imageViewStatusConnection.setImageResource(R.drawable.loading_img)
-                    CatsApiStatus.ERROR -> binding.imageViewStatusConnection.setImageResource(R.drawable.ic_connection_error)
-                    CatsApiStatus.DONE -> binding.imageViewStatusConnection.visibility = View.GONE
-                }
-            }
-        })
+//        recyclerViewCatImagesViewModel.status.observe(viewLifecycleOwner, {
+//            it.let {
+//                binding.imageViewStatusConnection.visibility = View.VISIBLE
+//                when(it) {
+//                    CatsApiStatus.LOADING -> binding.imageViewStatusConnection.setImageResource(R.drawable.loading_img)
+//                    CatsApiStatus.ERROR -> binding.imageViewStatusConnection.setImageResource(R.drawable.ic_connection_error)
+//                    CatsApiStatus.DONE -> binding.imageViewStatusConnection.visibility = View.GONE
+//                }
+//            }
+//        })
 
 //        recyclerViewCatImagesViewModel.properties.observe(viewLifecycleOwner, {
 //            it?.let {
@@ -83,10 +87,11 @@ class RecyclerViewCatImagesFragment : Fragment(), RecyclerViewCatImagesListener 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        _lifecycleCoroutineScopeJob.cancel()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        _lifecycleCoroutineScopeJob.cancel()
+        //_lifecycleCoroutineScopeJob.cancel()
     }
 }

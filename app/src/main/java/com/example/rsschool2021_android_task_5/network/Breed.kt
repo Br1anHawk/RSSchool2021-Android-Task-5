@@ -1,5 +1,9 @@
 package com.example.rsschool2021_android_task_5.network
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Breed (
     val weight: Weight = Weight("", ""),
     val id: String = "",
@@ -32,4 +36,4 @@ data class Breed (
     val short_legs: Int = 0,
     val wikipedia_url: String = "",
     val hypoallergenic: Int = 0
-)
+): Parcelable
