@@ -1,5 +1,7 @@
 package com.example.rsschool2021_android_task_5.overview_cats
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -36,13 +38,6 @@ class RecyclerViewCatImagesFragment : Fragment(), RecyclerViewCatImagesListener 
                 }
             }
         }
-    }
-
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        //_lifecycleCoroutineScopeJob.start()
     }
 
     override fun onCreateView(
@@ -90,8 +85,4 @@ class RecyclerViewCatImagesFragment : Fragment(), RecyclerViewCatImagesListener 
         _lifecycleCoroutineScopeJob.cancel()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        //_lifecycleCoroutineScopeJob.cancel()
-    }
 }

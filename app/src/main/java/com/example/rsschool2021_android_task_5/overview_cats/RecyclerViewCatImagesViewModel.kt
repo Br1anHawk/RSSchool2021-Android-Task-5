@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.example.rsschool2021_android_task_5.COUNT_OF_CAT_IMAGES_REQUEST_FROM_API
 import com.example.rsschool2021_android_task_5.HAS_BREEDS_API_PARAMETER_REQUEST
 import com.example.rsschool2021_android_task_5.PagingSource
@@ -15,6 +16,7 @@ import com.example.rsschool2021_android_task_5.network.CatsApi
 import com.example.rsschool2021_android_task_5.network.CatsApiService
 import com.example.rsschool2021_android_task_5.network.CatsApiStatus
 import com.example.rsschool2021_android_task_5.network.CatsProperty
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
@@ -30,10 +32,11 @@ class RecyclerViewCatImagesViewModel : ViewModel() {
     val properties: LiveData<List<CatsProperty>>
         get() = _properties
 
-    val dataFlowCatsProperty: StateFlow<PagingData<CatsProperty>> = Pager(PagingConfig(pageSize = COUNT_OF_CAT_IMAGES_REQUEST_FROM_API)) {
+    val dataFlowCatsProperty: Flow<PagingData<CatsProperty>> = Pager(PagingConfig(pageSize = COUNT_OF_CAT_IMAGES_REQUEST_FROM_API)) {
         PagingSource(CatsApi.retrofitService)
     }.flow
-        .stateIn(viewModelScope, SharingStarted.Lazily, PagingData.empty())
+        //.stateIn(viewModelScope, SharingStarted.Lazily, PagingData.empty())
+        .cachedIn(viewModelScope)
 
     init {
         //getCatProperties()
