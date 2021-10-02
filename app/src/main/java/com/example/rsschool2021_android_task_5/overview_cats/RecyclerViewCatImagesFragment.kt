@@ -33,15 +33,15 @@ class RecyclerViewCatImagesFragment : Fragment(), RecyclerViewCatImagesListener 
         RecyclerViewCatImagesAdapter(this)
     }
 
-    private val _lifecycleCoroutineScopeJob by lazy {
-        lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.CREATED) {
-                recyclerViewCatImagesViewModel.dataFlowCatsProperty.collectLatest {
-                    recyclerViewCatImagesAdapter.submitData(it)
-                }
-            }
-        }
-    }
+//    private val _lifecycleCoroutineScopeJob by lazy {
+//        lifecycleScope.launch {
+//            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.CREATED) {
+//                recyclerViewCatImagesViewModel.dataFlowCatsProperty.collectLatest {
+//                    recyclerViewCatImagesAdapter.submitData(it)
+//                }
+//            }
+//        }
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,7 +49,7 @@ class RecyclerViewCatImagesFragment : Fragment(), RecyclerViewCatImagesListener 
         savedInstanceState: Bundle?
     ): View {
 
-        _lifecycleCoroutineScopeJob.start()
+        //_lifecycleCoroutineScopeJob.start()
 
         _binding = FragmentRecyclerViewCatImagesBinding.inflate(inflater, container, false)
 
@@ -84,6 +84,14 @@ class RecyclerViewCatImagesFragment : Fragment(), RecyclerViewCatImagesListener 
 //                recyclerViewCatImagesAdapter.submitList(it)
 //            }
 //        })
+
+        lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.CREATED) {
+                recyclerViewCatImagesViewModel.dataFlowCatsProperty.collectLatest {
+                    recyclerViewCatImagesAdapter.submitData(it)
+                }
+            }
+        }
 
         return binding.root
     }
