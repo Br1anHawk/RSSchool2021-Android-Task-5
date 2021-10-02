@@ -11,15 +11,11 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.rsschool2021_android_task_5.COUNT_OF_CAT_IMAGES_REQUEST_FROM_API
 import com.example.rsschool2021_android_task_5.HAS_BREEDS_API_PARAMETER_REQUEST
-import com.example.rsschool2021_android_task_5.PagingSource
+import com.example.rsschool2021_android_task_5.pagination.PagingSource
 import com.example.rsschool2021_android_task_5.network.CatsApi
-import com.example.rsschool2021_android_task_5.network.CatsApiService
 import com.example.rsschool2021_android_task_5.network.CatsApiStatus
 import com.example.rsschool2021_android_task_5.network.CatsProperty
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class RecyclerViewCatImagesViewModel : ViewModel() {

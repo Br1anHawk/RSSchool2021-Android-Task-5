@@ -1,7 +1,8 @@
-package com.example.rsschool2021_android_task_5
+package com.example.rsschool2021_android_task_5.pagination
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.example.rsschool2021_android_task_5.HAS_BREEDS_API_PARAMETER_REQUEST
 import com.example.rsschool2021_android_task_5.network.CatsApiService
 import com.example.rsschool2021_android_task_5.network.CatsProperty
 

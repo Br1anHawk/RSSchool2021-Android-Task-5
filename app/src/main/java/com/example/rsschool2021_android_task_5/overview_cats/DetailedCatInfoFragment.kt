@@ -1,5 +1,6 @@
 package com.example.rsschool2021_android_task_5.overview_cats
 
+import android.Manifest
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
@@ -17,13 +18,24 @@ import java.io.File
 import java.io.FileOutputStream
 import android.graphics.Bitmap
 
-import android.graphics.drawable.BitmapDrawable
-import android.util.Log
-import androidx.core.graphics.drawable.toBitmap
 import java.lang.Exception
 import android.net.Uri
 
 import android.content.Intent
+
+import android.R.attr.bitmap
+
+import android.content.ContentValues
+
+import android.os.Build
+import androidx.core.graphics.drawable.toBitmap
+import kotlinx.android.synthetic.main.card_for_cat_item_container.*
+import kotlinx.android.synthetic.main.fragment_detailed_cat_info.*
+
+import java.io.OutputStream
+
+
+
 
 
 
@@ -51,23 +63,61 @@ class DetailedCatInfoFragment : Fragment() {
             .into(binding.imageView)
 
         binding.buttonSaveImageOnDevice.setOnClickListener {
-            var fos: FileOutputStream? = null
-             try {
-                //val imagesDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
-                val imagesDir = Environment.getStorageDirectory()
-                //imagesDir.mkdir()
-                val image = File(imagesDir, catsProperty.id + ".jpg")
-                fos = FileOutputStream(image)
-                val bitmap = binding.imageView.drawable.toBitmap(100, 100)
-                fos.use {
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, it)
+            binding.buttonSaveImageOnDevice.setImageResource(R.drawable.loading_animation)
+            requestPermissions(
+                arrayOf(
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.READ_EXTERNAL_STORAGE
+                ), REQUEST_CODE
+            )
+
+            val imageFileName = "${catsProperty.id}.jpg"
+            var fos: OutputStream? = null
+            try {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    val resolver = binding.imageView.context.contentResolver
+                    val contentValues = ContentValues()
+                    contentValues.put(
+                        MediaStore.MediaColumns.DISPLAY_NAME,
+                        imageFileName
+                    )
+                    contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpg")
+                    contentValues.put(
+                        MediaStore.MediaColumns.RELATIVE_PATH,
+                        Environment.DIRECTORY_PICTURES
+                    )
+                    val imageUri =
+                        resolver?.insert(
+                            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                            contentValues
+                        )
+                    fos = resolver?.openOutputStream(requireNotNull(imageUri))
+                } else {
+                    val imagesDir =
+                        Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+                            .toString()
+                    val image = File(imagesDir, imageFileName)
+                    fos = FileOutputStream(image)
                 }
+                binding
+                    .imageView
+                    .drawable
+                    .toBitmap()
+                    .compress(Bitmap.CompressFormat.JPEG, QUALITY, fos)
+                binding.buttonSaveImageOnDevice.setImageResource(R.drawable.ic_save_on_device_ok)
             } catch (e: Exception) {
-                Log.e("SAVE-IMAGE", e.stackTraceToString())
+                e.printStackTrace()
+                binding.buttonSaveImageOnDevice.setImageResource(R.drawable.ic_save_on_device_error)
             } finally {
                 fos?.flush()
                 fos?.close()
             }
+
+            val mediaScanIntent = Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE)
+            val picturesDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+            val contentUri = Uri.fromFile(picturesDirectory)
+            mediaScanIntent.data = contentUri
+            context?.sendBroadcast(mediaScanIntent)
         }
 
         with(binding) {
@@ -120,5 +170,10 @@ class DetailedCatInfoFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        const val REQUEST_CODE = 111
+        const val QUALITY = 100
     }
 }

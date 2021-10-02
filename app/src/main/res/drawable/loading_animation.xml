@@ -20,4 +20,7 @@
 <animated-rotate xmlns:android="http://schemas.android.com/apk/res/android"
     android:drawable="@drawable/ic_loading_img"
     android:pivotX="50%"
-    android:pivotY="50%" />
+    android:pivotY="50%"
+    android:duration="1"
+    android:fromDegrees="0"
+    android:toDegrees="1080"/>
