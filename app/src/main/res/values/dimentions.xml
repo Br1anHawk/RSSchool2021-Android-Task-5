@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <dimen name="button_open_list_of_cat_images_width">100dp</dimen>
+    <dimen name="button_open_list_of_cat_images_height">100dp</dimen>
+
     <dimen name="card_for_cat_item_container_height">150dp</dimen>
 
     <dimen name="headers_main_info_label_text_size">24sp</dimen>

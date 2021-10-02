@@ -5,17 +5,19 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/main_background_gradient"
     tools:context=".HomeFragment">
 
-    <Button
+    <ImageView
         android:id="@+id/button_open_list_of_cat_images"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/button_open_list_of_cat_images_width"
+        android:layout_height="@dimen/button_open_list_of_cat_images_height"
         android:text="@string/button_open_list_of_cat_images"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_view_cat_logo" />
+        app:layout_constraintTop_toBottomOf="@+id/image_view_cat_logo"
+        app:srcCompat="@drawable/ic_open_list_of_cat_images" />
 
     <ImageView
         android:id="@+id/image_view_cat_logo"

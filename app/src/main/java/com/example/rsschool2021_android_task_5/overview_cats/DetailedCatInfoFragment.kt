@@ -17,26 +17,17 @@ import com.example.rsschool2021_android_task_5.databinding.FragmentDetailedCatIn
 import java.io.File
 import java.io.FileOutputStream
 import android.graphics.Bitmap
-
 import java.lang.Exception
 import android.net.Uri
-
 import android.content.Intent
-
-import android.R.attr.bitmap
-
 import android.content.ContentValues
-
+import android.graphics.drawable.Drawable
 import android.os.Build
 import androidx.core.graphics.drawable.toBitmap
-import kotlinx.android.synthetic.main.card_for_cat_item_container.*
-import kotlinx.android.synthetic.main.fragment_detailed_cat_info.*
-
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.request.RequestListener
 import java.io.OutputStream
-
-
-
-
+import com.bumptech.glide.load.engine.GlideException
 
 
 
@@ -54,14 +45,50 @@ class DetailedCatInfoFragment : Fragment() {
 
         val args: DetailedCatInfoFragmentArgs by navArgs()
         val catsProperty = args.catsProperty
+
         Glide.with(binding.imageView.context)
             .load(catsProperty.url.toUri().buildUpon().scheme("https").build())
             .apply(
                 RequestOptions()
                     .placeholder(R.drawable.loading_animation)
                     .error(R.drawable.ic_cat_broken_image))
+            .listener(
+                object : RequestListener<Drawable?> {
+                    override fun onLoadFailed(
+                        e: GlideException?,
+                        model: Any?,
+                        target: com.bumptech.glide.request.target.Target<Drawable?>?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        return false
+                    }
+
+                    override fun onResourceReady(
+                        resource: Drawable?,
+                        model: Any?,
+                        target: com.bumptech.glide.request.target.Target<Drawable?>?,
+                        dataSource: DataSource?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        try {
+                            with(binding) {
+                                if (File("${Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)}", "${catsProperty.id}$IMAGE_FILE_EXTENSION").exists()) {
+                                    buttonSaveImageOnDevice.setImageResource(R.drawable.ic_save_on_device_ok)
+                                    return false
+                                }
+                                buttonSaveImageOnDevice.setImageResource(R.drawable.ic_save_on_device_image)
+                                buttonSaveImageOnDevice.isEnabled = true
+                            }
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                        }
+                        return false
+                    }
+                }
+            )
             .into(binding.imageView)
 
+        binding.buttonSaveImageOnDevice.isEnabled = false
         binding.buttonSaveImageOnDevice.setOnClickListener {
             binding.buttonSaveImageOnDevice.setImageResource(R.drawable.loading_animation)
             requestPermissions(
@@ -71,7 +98,7 @@ class DetailedCatInfoFragment : Fragment() {
                 ), REQUEST_CODE
             )
 
-            val imageFileName = "${catsProperty.id}.jpg"
+            val imageFileName = "${catsProperty.id}$IMAGE_FILE_EXTENSION"
             var fos: OutputStream? = null
             try {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
@@ -104,6 +131,13 @@ class DetailedCatInfoFragment : Fragment() {
                     .drawable
                     .toBitmap()
                     .compress(Bitmap.CompressFormat.JPEG, QUALITY, fos)
+
+                val mediaScanIntent = Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE)
+                val picturesDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+                val contentUri = Uri.fromFile(picturesDirectory)
+                mediaScanIntent.data = contentUri
+                context?.sendBroadcast(mediaScanIntent)
+
                 binding.buttonSaveImageOnDevice.setImageResource(R.drawable.ic_save_on_device_ok)
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -113,11 +147,6 @@ class DetailedCatInfoFragment : Fragment() {
                 fos?.close()
             }
 
-            val mediaScanIntent = Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE)
-            val picturesDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
-            val contentUri = Uri.fromFile(picturesDirectory)
-            mediaScanIntent.data = contentUri
-            context?.sendBroadcast(mediaScanIntent)
         }
 
         with(binding) {
@@ -154,8 +183,6 @@ class DetailedCatInfoFragment : Fragment() {
                 ratingBarCatSuppressedTail.rating = breed.suppressed_tail.toFloat()
                 ratingBarCatShortLegs.rating = breed.short_legs.toFloat()
 
-
-
                 imageViewCatWikipediaInfo.setOnClickListener {
                     val implicitInternetWebSiteOpenIntent = Intent(Intent.ACTION_VIEW)
                     implicitInternetWebSiteOpenIntent.data = Uri.parse(breed.wikipedia_url)
@@ -173,6 +200,7 @@ class DetailedCatInfoFragment : Fragment() {
     }
 
     companion object {
+        const val IMAGE_FILE_EXTENSION = ".jpg"
         const val REQUEST_CODE = 111
         const val QUALITY = 100
     }
