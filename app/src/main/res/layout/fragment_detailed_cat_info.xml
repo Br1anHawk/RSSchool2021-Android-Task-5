@@ -5,7 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".overview_cats.DetailedCatInfoFragment" >
+    tools:context=".overviewCats.DetailedCatInfoFragment">
 
     <ScrollView
         android:layout_width="match_parent"

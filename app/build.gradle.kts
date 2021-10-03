@@ -1,79 +1,77 @@
 plugins {
-    id(Plugins.ANDROID_APPLICATION)
-    id(Plugins.KOTLIN_ANDROID)
-    id(Plugins.KOTLIN_ANDROID_EXTENSIONS)
-    id(Plugins.ANDROIDX_NAVIGATION_SAFEARGS)
+    id("com.android.application")
+    id("kotlin-android")
+    id("kotlin-android-extensions")
+    id("androidx.navigation.safeargs")
 }
 
 android {
-    compileSdk(Versions.App.COMPILE_SDK)
+    compileSdk = 31
 
     defaultConfig {
-        applicationId(Versions.App.APPLICATION_ID)
-        minSdk(Versions.App.MIN_SDK)
-        targetSdk(Versions.App.TARGET_SDK)
-        versionCode(Versions.App.VERSION_CODE)
-        versionName(Versions.App.VERSION_NAME)
+        applicationId = "com.example.rsschool2021_android_task_5"
+        minSdk = 21
+        targetSdk = 31
+        versionCode = 1
+        versionName = "1.0"
 
-        testInstrumentationRunner("androidx.test.runner.AndroidJUnitRunner")
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
-
     }
 
     buildTypes {
         getByName("release") {
-            minifyEnabled = false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            isMinifyEnabled = false
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
     compileOptions {
-        sourceCompatibility = Versions.JAVA
-                targetCompatibility = Versions.JAVA
+        sourceCompatibility = JavaVersion.VERSION_1_8
+                targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = Versions.App.JVM_TARGET
+        jvmTarget = "1.8"
     }
     buildFeatures {
         viewBinding = true
     }
     androidExtensions {
-        experimental = true
+        isExperimental = true
     }
 }
 
 dependencies {
 
-    implementation(Dependencies.AndroidX.CORE)
-    implementation(Dependencies.AndroidX.APPCOMPAT)
-    implementation(Dependencies.Google.MATERIAL)
-    implementation(Dependencies.AndroidX.CONSTRAINT_LAYOUT)
-    implementation(Dependencies.AndroidX.LEGACY)
+    implementation("androidx.core:core-ktx:1.6.0")
+    implementation("androidx.appcompat:appcompat:1.3.1")
+    implementation("com.google.android.material:material:1.4.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.1")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
     // Navigation
     val version_navigation = "2.3.5"
-    implementation(Dependencies.AndroidX.NAVIGATION_FRAGMENT_KTX)
-    implementation(Dependencies.AndroidX.NAVIGATION_UI_KTX)
+    implementation("androidx.navigation:navigation-fragment-ktx:$version_navigation")
+    implementation("androidx.navigation:navigation-ui-ktx:$version_navigation")
 
     // ViewModel
     val version_lifecycle = "2.4.0-beta01"
-    implementation(Dependencies.AndroidX.LIFECYCLE_LIVEDATA_KTX)
-    implementation(Dependencies.AndroidX.LIFECYCLE_RUNTIME_KTX)
-    implementation(Dependencies.AndroidX.LIFECYCLE_VIEWMODEL_KTX)
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$version_lifecycle")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$version_lifecycle")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$version_lifecycle")
 
     // Glide
     val version_glide = "4.8.0"
-    implementation(Dependencies.AndroidX.GLIDE)
+    implementation("com.github.bumptech.glide:glide:$version_glide")
 
     // Moshi
     val version_moshi = "1.9.3"
-    implementation(Dependencies.AndroidX.MOSHI)
+    implementation("com.squareup.moshi:moshi-kotlin:$version_moshi")
 
     // Retrofit with Moshi Converter
     val version_retrofit = "2.9.0"
-    implementation(Dependencies.AndroidX.RETROFIT)
+    implementation("com.squareup.retrofit2:converter-moshi:$version_retrofit")
 
     // Pagination
     val pagingVersion = "3.0.1"
-    implementation(Dependencies.AndroidX.PAGINATION)
-
+    implementation("androidx.paging:paging-runtime-ktx:$pagingVersion")
 }

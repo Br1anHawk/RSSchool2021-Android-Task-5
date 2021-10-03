@@ -1,4 +1,4 @@
-package com.example.rsschool2021_android_task_5.network
+package com.example.rsschool2021TheCatsApi.network
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -33,10 +33,10 @@ interface CatsApiService {
         @Query("limit") limit: Int,
         @Query("page") page: Int,
         @Query("has_breeds") has_breeds: Boolean,
-        @Query("order") order: String = "desc",
+        @Query("order") order: String = "desc"
     ): List<CatsProperty>
 }
 
 object CatsApi {
-    val retrofitService : CatsApiService by lazy { retrofit.create(CatsApiService::class.java) }
+    val retrofitService: CatsApiService by lazy { retrofit.create(CatsApiService::class.java) }
 }

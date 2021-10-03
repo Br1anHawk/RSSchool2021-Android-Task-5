@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.rsschool2021_android_task_5.HomeFragment"
+        android:name="com.example.rsschool2021TheCatsApi.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/recyclerViewCatImagesFragment"
-        android:name="com.example.rsschool2021_android_task_5.overview_cats.RecyclerViewCatImagesFragment"
+        android:name="com.example.rsschool2021TheCatsApi.overviewCats.RecyclerViewCatImagesFragment"
         android:label="fragment_recycler_view_cat_images"
         tools:layout="@layout/fragment_recycler_view_cat_images" >
         <action
@@ -33,11 +33,11 @@
     </fragment>
     <fragment
         android:id="@+id/detailedCatInfoFragment"
-        android:name="com.example.rsschool2021_android_task_5.overview_cats.DetailedCatInfoFragment"
+        android:name="com.example.rsschool2021TheCatsApi.overviewCats.DetailedCatInfoFragment"
         android:label="fragment_detailed_cat_info"
         tools:layout="@layout/fragment_detailed_cat_info" >
         <argument
             android:name="catsProperty"
-            app:argType="com.example.rsschool2021_android_task_5.network.CatsProperty" />
+            app:argType="com.example.rsschool2021TheCatsApi.network.CatsProperty" />
     </fragment>
 </navigation>

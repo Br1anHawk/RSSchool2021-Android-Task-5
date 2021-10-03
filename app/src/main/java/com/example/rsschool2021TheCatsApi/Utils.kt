@@ -1,4 +1,4 @@
-package com.example.rsschool2021_android_task_5
+package com.example.rsschool2021TheCatsApi
 
 const val SPAN_COUNT_FOR_GRID_LAYOUT_MANAGER = 2
 const val COUNT_OF_CAT_IMAGES_REQUEST_FROM_API = 10

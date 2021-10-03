@@ -1,4 +1,4 @@
-package com.example.rsschool2021_android_task_5.pagination
+package com.example.rsschool2021TheCatsApi.pagination
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.rsschool2021_android_task_5.databinding.ItemErrorBinding
-import com.example.rsschool2021_android_task_5.databinding.ItemProgressBinding
+import com.example.rsschool2021TheCatsApi.databinding.ItemErrorBinding
+import com.example.rsschool2021TheCatsApi.databinding.ItemProgressBinding
 
 class CatsLoaderStateAdapter() : LoadStateAdapter<CatsLoaderStateAdapter.ItemViewHolder>() {
 
@@ -22,7 +22,7 @@ class CatsLoaderStateAdapter() : LoadStateAdapter<CatsLoaderStateAdapter.ItemVie
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState): ItemViewHolder {
-        return when(loadState) {
+        return when (loadState) {
             LoadState.Loading -> ProgressViewHolder(LayoutInflater.from(parent.context), parent)
             is LoadState.Error -> ErrorViewHolder(LayoutInflater.from(parent.context), parent)
             is LoadState.NotLoading -> error("Not supported")

@@ -1,10 +1,10 @@
-package com.example.rsschool2021_android_task_5.network
+package com.example.rsschool2021TheCatsApi.network
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Weight (
+data class Weight(
     val imperial: String = "",
     val metric: String = ""
-): Parcelable
+) : Parcelable

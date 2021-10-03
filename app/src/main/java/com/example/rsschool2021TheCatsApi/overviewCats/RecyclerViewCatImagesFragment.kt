@@ -1,22 +1,25 @@
-package com.example.rsschool2021_android_task_5.overview_cats
+package com.example.rsschool2021TheCatsApi.overviewCats
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
-import androidx.lifecycle.*
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.rsschool2021_android_task_5.R
-import com.example.rsschool2021_android_task_5.SPAN_COUNT_FOR_GRID_LAYOUT_MANAGER
-import com.example.rsschool2021_android_task_5.databinding.FragmentRecyclerViewCatImagesBinding
-import com.example.rsschool2021_android_task_5.network.CatsProperty
-import com.example.rsschool2021_android_task_5.pagination.CatsLoaderStateAdapter
+import com.example.rsschool2021TheCatsApi.R
+import com.example.rsschool2021TheCatsApi.SPAN_COUNT_FOR_GRID_LAYOUT_MANAGER
+import com.example.rsschool2021TheCatsApi.databinding.FragmentRecyclerViewCatImagesBinding
+import com.example.rsschool2021TheCatsApi.network.CatsProperty
+import com.example.rsschool2021TheCatsApi.pagination.CatsLoaderStateAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -47,8 +50,7 @@ class RecyclerViewCatImagesFragment : Fragment(), RecyclerViewCatImagesListener 
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        //_lifecycleCoroutineScopeJob.start()
+        // _lifecycleCoroutineScopeJob.start()
 
         _binding = FragmentRecyclerViewCatImagesBinding.inflate(inflater, container, false)
 
@@ -102,7 +104,6 @@ class RecyclerViewCatImagesFragment : Fragment(), RecyclerViewCatImagesListener 
                 }
 
                 setNegativeButton(getString(R.string.alert_dialog_text_no)) { _, _ ->
-
                 }
                 setCancelable(true)
             }.create().show()
@@ -112,13 +113,17 @@ class RecyclerViewCatImagesFragment : Fragment(), RecyclerViewCatImagesListener 
     }
 
     override fun detailedInfoAboutCat(catsProperty: CatsProperty) {
-        this.findNavController().navigate(RecyclerViewCatImagesFragmentDirections.actionRecyclerViewCatImagesFragmentToDetailedCatInfoFragment(catsProperty))
+        this
+            .findNavController()
+            .navigate(
+                RecyclerViewCatImagesFragmentDirections
+                    .actionRecyclerViewCatImagesFragmentToDetailedCatInfoFragment(catsProperty)
+            )
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-        //_lifecycleCoroutineScopeJob.cancel()
+        // _lifecycleCoroutineScopeJob.cancel()
     }
-
 }

@@ -1,9 +1,9 @@
-package com.example.rsschool2021_android_task_5.overview_cats
+package com.example.rsschool2021TheCatsApi.overviewCats
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.rsschool2021_android_task_5.network.CatsProperty
+import com.example.rsschool2021TheCatsApi.network.CatsProperty
 
-object CatsPropertyDiffCallback:DiffUtil.ItemCallback<CatsProperty>() {
+object CatsPropertyDiffCallback : DiffUtil.ItemCallback<CatsProperty>() {
     override fun areItemsTheSame(oldItem: CatsProperty, newItem: CatsProperty): Boolean {
         return oldItem.id == newItem.id
     }
@@ -12,5 +12,5 @@ object CatsPropertyDiffCallback:DiffUtil.ItemCallback<CatsProperty>() {
         return oldItem == newItem
     }
 
-    //override fun getChangePayload(oldItem: CatsProperty, newItem: CatsProperty) = Any()
+    // override fun getChangePayload(oldItem: CatsProperty, newItem: CatsProperty) = Any()
 }

@@ -1,12 +1,12 @@
-package com.example.rsschool2021_android_task_5
+package com.example.rsschool2021TheCatsApi
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.rsschool2021_android_task_5.databinding.FragmentHomeBinding
+import com.example.rsschool2021TheCatsApi.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -20,7 +20,12 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         binding.buttonOpenListOfCatImages.setOnClickListener {
-            this.findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToRecyclerViewCatImagesFragment())
+            this
+                .findNavController()
+                .navigate(
+                    HomeFragmentDirections
+                        .actionHomeFragmentToRecyclerViewCatImagesFragment()
+                )
         }
 
         return binding.root

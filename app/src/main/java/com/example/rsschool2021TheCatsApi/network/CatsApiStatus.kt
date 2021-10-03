@@ -1,4 +1,4 @@
-package com.example.rsschool2021_android_task_5.network
+package com.example.rsschool2021TheCatsApi.network
 
 enum class CatsApiStatus {
     LOADING,

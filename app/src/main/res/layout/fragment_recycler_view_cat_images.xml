@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/main_background_gradient"
-    tools:context=".overview_cats.RecyclerViewCatImagesFragment">
+    tools:context=".overviewCats.RecyclerViewCatImagesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_cat_images"
