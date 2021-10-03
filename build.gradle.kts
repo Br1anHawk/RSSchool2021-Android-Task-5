@@ -31,9 +31,12 @@ dependencies {
 }
 
 detekt {
-    toolVersion = "1.10.0"
+    toolVersion = "1.18.0"
     config = files("config/detekt/detekt.yml")
     buildUponDefaultConfig = true
+    autoCorrect = true
+
+    input = files("app/src/main/java", "app/src/main/kotlin")
 
     reports {
         html {
@@ -42,6 +45,8 @@ detekt {
         }
     }
 }
+
+tasks.detekt.jvmTarget = Versions.App.JVM_TARGET
 
 tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)

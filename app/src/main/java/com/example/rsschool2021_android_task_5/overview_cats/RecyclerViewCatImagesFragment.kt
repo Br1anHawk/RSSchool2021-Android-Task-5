@@ -1,12 +1,12 @@
 package com.example.rsschool2021_android_task_5.overview_cats
 
-import android.app.Activity
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import androidx.lifecycle.*
 import androidx.navigation.fragment.findNavController
@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.rsschool2021_android_task_5.R
 import com.example.rsschool2021_android_task_5.SPAN_COUNT_FOR_GRID_LAYOUT_MANAGER
 import com.example.rsschool2021_android_task_5.databinding.FragmentRecyclerViewCatImagesBinding
-import com.example.rsschool2021_android_task_5.network.CatsApiStatus
 import com.example.rsschool2021_android_task_5.network.CatsProperty
 import com.example.rsschool2021_android_task_5.pagination.CatsLoaderStateAdapter
 import kotlinx.coroutines.flow.collectLatest
@@ -91,6 +90,22 @@ class RecyclerViewCatImagesFragment : Fragment(), RecyclerViewCatImagesListener 
                     recyclerViewCatImagesAdapter.submitData(it)
                 }
             }
+        }
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            AlertDialog.Builder(requireContext()).apply {
+                setTitle(getString(R.string.alert_dialog_text_confirmation))
+                setMessage(getString(R.string.alert_dialog_text_question))
+
+                setPositiveButton(getString(R.string.alert_dialog_text_yes)) { _, _ ->
+                    requireActivity().finishAndRemoveTask()
+                }
+
+                setNegativeButton(getString(R.string.alert_dialog_text_no)) { _, _ ->
+
+                }
+                setCancelable(true)
+            }.create().show()
         }
 
         return binding.root
