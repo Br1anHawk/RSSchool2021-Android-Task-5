@@ -1,5 +1,6 @@
 package com.example.rsschool2021TheCatsApi.network
 
+import com.example.rsschool2021TheCatsApi.network.entities.CatsProperty
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -25,14 +26,14 @@ interface CatsApiService {
     @GET("v1/images/search")
     suspend fun getProperties(
         @Query("limit") limit: Int,
-        @Query("has_breeds") has_breeds: Boolean
+        @Query("has_breeds") hasBreeds: Boolean
     ): List<CatsProperty>
 
     @GET("v1/images/search")
     suspend fun getPropertiesWithPagination(
         @Query("limit") limit: Int,
         @Query("page") page: Int,
-        @Query("has_breeds") has_breeds: Boolean,
+        @Query("has_breeds") hasBreeds: Boolean,
         @Query("order") order: String = "desc"
     ): List<CatsProperty>
 }

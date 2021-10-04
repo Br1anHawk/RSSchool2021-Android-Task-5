@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.rsschool2021TheCatsApi.R
 import com.example.rsschool2021TheCatsApi.SPAN_COUNT_FOR_GRID_LAYOUT_MANAGER
 import com.example.rsschool2021TheCatsApi.databinding.FragmentRecyclerViewCatImagesBinding
-import com.example.rsschool2021TheCatsApi.network.CatsProperty
+import com.example.rsschool2021TheCatsApi.network.entities.CatsProperty
 import com.example.rsschool2021TheCatsApi.pagination.CatsLoaderStateAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -57,8 +57,8 @@ class RecyclerViewCatImagesFragment : Fragment(), RecyclerViewCatImagesListener 
         binding.recyclerViewCatImages.apply {
             layoutManager = GridLayoutManager(context, SPAN_COUNT_FOR_GRID_LAYOUT_MANAGER)
             adapter = recyclerViewCatImagesAdapter.withLoadStateHeaderAndFooter(
-                header = CatsLoaderStateAdapter(),
-                footer = CatsLoaderStateAdapter()
+                header = CatsLoaderStateAdapter(recyclerViewCatImagesAdapter),
+                footer = CatsLoaderStateAdapter(recyclerViewCatImagesAdapter)
             )
         }
 
@@ -66,7 +66,14 @@ class RecyclerViewCatImagesFragment : Fragment(), RecyclerViewCatImagesListener 
             with(binding) {
                 recyclerViewCatImages.isVisible = state.refresh != LoadState.Loading
                 progressBarStatusConnection.isVisible = state.refresh == LoadState.Loading
+                containerForErrorConnection.isVisible = state.refresh is LoadState.Error
             }
+        }
+
+        binding.buttonRetryConnection.setOnClickListener {
+            recyclerViewCatImagesAdapter.retry()
+            recyclerViewCatImagesAdapter.refresh()
+            // TODO: Doesn't work, connection retry.
         }
 
 //        recyclerViewCatImagesViewModel.status.observe(viewLifecycleOwner, {

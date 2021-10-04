@@ -16,5 +16,8 @@
     <dimen name="image_view_cat_wikipedia_info_width">70dp</dimen>
     <dimen name="image_view_cat_wikipedia_info_height">70dp</dimen>
 
+    <dimen name="button_retry_connection_width">50dp</dimen>
+    <dimen name="button_retry_connection_height">50dp</dimen>
+
     <dimen name="views_margin">5dp</dimen>
 </resources>

@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.rsschool2021TheCatsApi.R
 import com.example.rsschool2021TheCatsApi.databinding.CardForCatItemContainerBinding
-import com.example.rsschool2021TheCatsApi.network.CatsProperty
+import com.example.rsschool2021TheCatsApi.network.entities.CatsProperty
 
 class CatsPropertyViewHolder private constructor(
     private val binding: CardForCatItemContainerBinding,

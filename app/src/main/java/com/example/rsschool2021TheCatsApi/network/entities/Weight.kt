@@ -1,4 +1,4 @@
-package com.example.rsschool2021TheCatsApi.network
+package com.example.rsschool2021TheCatsApi.network.entities
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

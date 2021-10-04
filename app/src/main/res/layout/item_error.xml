@@ -15,10 +15,30 @@
         android:textAllCaps="true"
         android:textAppearance="?textAppearanceSubtitle1"
         android:textColor="?colorError"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Unknown error" />
+
+    <ImageView
+        android:id="@+id/image_view_error_connection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_connection_error" />
+
+    <Button
+        android:id="@+id/button_retry"
+        android:layout_width="@dimen/button_retry_connection_width"
+        android:layout_height="@dimen/button_retry_connection_height"
+        android:background="@android:drawable/stat_notify_sync"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_view_error_connection" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

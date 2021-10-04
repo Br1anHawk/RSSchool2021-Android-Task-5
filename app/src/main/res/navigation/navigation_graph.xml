@@ -38,6 +38,6 @@
         tools:layout="@layout/fragment_detailed_cat_info" >
         <argument
             android:name="catsProperty"
-            app:argType="com.example.rsschool2021TheCatsApi.network.CatsProperty" />
+            app:argType="com.example.rsschool2021TheCatsApi.network.entities.CatsProperty" />
     </fragment>
 </navigation>

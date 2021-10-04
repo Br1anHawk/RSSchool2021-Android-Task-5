@@ -8,8 +8,11 @@ import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rsschool2021TheCatsApi.databinding.ItemErrorBinding
 import com.example.rsschool2021TheCatsApi.databinding.ItemProgressBinding
+import com.example.rsschool2021TheCatsApi.overviewCats.RecyclerViewCatImagesAdapter
 
-class CatsLoaderStateAdapter() : LoadStateAdapter<CatsLoaderStateAdapter.ItemViewHolder>() {
+class CatsLoaderStateAdapter(
+    internal val adapter: RecyclerViewCatImagesAdapter
+) : LoadStateAdapter<CatsLoaderStateAdapter.ItemViewHolder>() {
 
     override fun getStateViewType(loadState: LoadState) = when (loadState) {
         is LoadState.NotLoading -> error("Not supported")
@@ -24,7 +27,7 @@ class CatsLoaderStateAdapter() : LoadStateAdapter<CatsLoaderStateAdapter.ItemVie
     override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState): ItemViewHolder {
         return when (loadState) {
             LoadState.Loading -> ProgressViewHolder(LayoutInflater.from(parent.context), parent)
-            is LoadState.Error -> ErrorViewHolder(LayoutInflater.from(parent.context), parent)
+            is LoadState.Error -> ErrorViewHolder(LayoutInflater.from(parent.context), parent, adapter)
             is LoadState.NotLoading -> error("Not supported")
         }
     }
@@ -67,12 +70,16 @@ class CatsLoaderStateAdapter() : LoadStateAdapter<CatsLoaderStateAdapter.ItemVie
     }
 
     class ErrorViewHolder internal constructor(
-        private val binding: ItemErrorBinding
+        private val binding: ItemErrorBinding,
+        private val adapter: RecyclerViewCatImagesAdapter
     ) : ItemViewHolder(binding.root) {
 
         override fun bind(loadState: LoadState) {
             require(loadState is LoadState.Error)
-            binding.errorMessage.text = loadState.error.localizedMessage
+            // binding.errorMessage.text = loadState.error.localizedMessage
+            binding.buttonRetry.setOnClickListener {
+                adapter.retry()
+            }
         }
 
         companion object {
@@ -80,6 +87,7 @@ class CatsLoaderStateAdapter() : LoadStateAdapter<CatsLoaderStateAdapter.ItemVie
             operator fun invoke(
                 layoutInflater: LayoutInflater,
                 parent: ViewGroup? = null,
+                adapter: RecyclerViewCatImagesAdapter,
                 attachToRoot: Boolean = false
             ): ErrorViewHolder {
                 return ErrorViewHolder(
@@ -87,7 +95,8 @@ class CatsLoaderStateAdapter() : LoadStateAdapter<CatsLoaderStateAdapter.ItemVie
                         layoutInflater,
                         parent,
                         attachToRoot
-                    )
+                    ),
+                    adapter
                 )
             }
         }

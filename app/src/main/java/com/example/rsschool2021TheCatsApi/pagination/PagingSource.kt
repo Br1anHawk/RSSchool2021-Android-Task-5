@@ -4,7 +4,7 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.rsschool2021TheCatsApi.HAS_BREEDS_API_PARAMETER_REQUEST
 import com.example.rsschool2021TheCatsApi.network.CatsApiService
-import com.example.rsschool2021TheCatsApi.network.CatsProperty
+import com.example.rsschool2021TheCatsApi.network.entities.CatsProperty
 
 class PagingSource(
     private val catsApiService: CatsApiService

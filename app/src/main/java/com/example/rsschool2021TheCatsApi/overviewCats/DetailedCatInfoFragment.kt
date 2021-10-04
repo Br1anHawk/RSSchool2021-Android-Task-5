@@ -157,39 +157,43 @@ class DetailedCatInfoFragment : Fragment() {
             if (catsProperty.breeds.isNotEmpty()) {
                 val breed = catsProperty.breeds[0]
                 textViewCatName.text = breed.name
-                if (breed.alt_names.isEmpty()) {
+                if (breed.altNames.isEmpty()) {
                     textViewCatAltName.visibility = View.GONE
                 } else {
-                    textViewCatAltName.text = "\"${breed.alt_names}\""
+                    textViewCatAltName.text = "\"${breed.altNames}\""
                 }
                 textViewCatTemperament.text = breed.temperament
                 textViewCatOrigin.text = breed.origin
-                textViewCatLifeSpan.text = breed.life_span
+                textViewCatLifeSpan.text = breed.lifeSpan
                 textViewCatDescription.text = breed.description
                 ratingBarCatAdaptability.rating = breed.adaptability.toFloat()
 
-                ratingBarCatAffectionLevel.rating = breed.affection_level.toFloat()
-                ratingBarCatChildFriendly.rating = breed.child_friendly.toFloat()
-                ratingBarCatDogFriendly.rating = breed.dog_friendly.toFloat()
-                ratingBarCatEnergyLevel.rating = breed.energy_level.toFloat()
+                ratingBarCatAffectionLevel.rating = breed.affectionLevel.toFloat()
+                ratingBarCatChildFriendly.rating = breed.childFriendly.toFloat()
+                ratingBarCatDogFriendly.rating = breed.dogFriendly.toFloat()
+                ratingBarCatEnergyLevel.rating = breed.energyLevel.toFloat()
                 ratingBarCatGrooming.rating = breed.grooming.toFloat()
-                ratingBarCatHealthIssues.rating = breed.health_issues.toFloat()
+                ratingBarCatHealthIssues.rating = breed.healthIssues.toFloat()
                 ratingBarCatIntelligence.rating = breed.intelligence.toFloat()
-                ratingBarCatSheddingLevel.rating = breed.shedding_level.toFloat()
-                ratingBarCatSocialNeeds.rating = breed.social_needs.toFloat()
-                ratingBarCatStrangerFriendly.rating = breed.stranger_friendly.toFloat()
+                ratingBarCatSheddingLevel.rating = breed.sheddingLevel.toFloat()
+                ratingBarCatSocialNeeds.rating = breed.socialNeeds.toFloat()
+                ratingBarCatStrangerFriendly.rating = breed.strangerFriendly.toFloat()
                 ratingBarCatVocalisation.rating = breed.vocalisation.toFloat()
                 ratingBarCatExperimental.rating = breed.experimental.toFloat()
                 ratingBarCatHairless.rating = breed.hairless.toFloat()
                 ratingBarCatNatural.rating = breed.natural.toFloat()
                 ratingBarCatRare.rating = breed.rare.toFloat()
                 ratingBarCatRex.rating = breed.rex.toFloat()
-                ratingBarCatSuppressedTail.rating = breed.suppressed_tail.toFloat()
-                ratingBarCatShortLegs.rating = breed.short_legs.toFloat()
+                ratingBarCatSuppressedTail.rating = breed.suppressedTail.toFloat()
+                ratingBarCatShortLegs.rating = breed.shortLegs.toFloat()
+
+                if (breed.wikipediaUrl.isBlank()) {
+                    imageViewCatWikipediaInfo.visibility = View.GONE
+                }
 
                 imageViewCatWikipediaInfo.setOnClickListener {
                     val implicitInternetWebSiteOpenIntent = Intent(Intent.ACTION_VIEW)
-                    implicitInternetWebSiteOpenIntent.data = Uri.parse(breed.wikipedia_url)
+                    implicitInternetWebSiteOpenIntent.data = Uri.parse(breed.wikipediaUrl)
                     startActivity(implicitInternetWebSiteOpenIntent)
                 }
             }

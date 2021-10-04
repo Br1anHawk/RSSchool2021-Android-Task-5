@@ -2,7 +2,7 @@ package com.example.rsschool2021TheCatsApi.overviewCats
 
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
-import com.example.rsschool2021TheCatsApi.network.CatsProperty
+import com.example.rsschool2021TheCatsApi.network.entities.CatsProperty
 
 class RecyclerViewCatImagesAdapter(
     private val listener: RecyclerViewCatImagesListener
