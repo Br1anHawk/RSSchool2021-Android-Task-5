@@ -22,6 +22,7 @@ import com.example.rsschool2021TheCatsApi.network.entities.CatsProperty
 import com.example.rsschool2021TheCatsApi.pagination.CatsLoaderStateAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.lang.IllegalArgumentException
 
 class RecyclerViewCatImagesFragment : Fragment(), RecyclerViewCatImagesListener {
     private var _binding: FragmentRecyclerViewCatImagesBinding? = null
@@ -120,12 +121,16 @@ class RecyclerViewCatImagesFragment : Fragment(), RecyclerViewCatImagesListener 
     }
 
     override fun detailedInfoAboutCat(catsProperty: CatsProperty) {
-        this
-            .findNavController()
-            .navigate(
-                RecyclerViewCatImagesFragmentDirections
-                    .actionRecyclerViewCatImagesFragmentToDetailedCatInfoFragment(catsProperty)
-            )
+        try {
+            this
+                .findNavController()
+                .navigate(
+                    RecyclerViewCatImagesFragmentDirections
+                        .actionRecyclerViewCatImagesFragmentToDetailedCatInfoFragment(catsProperty)
+                )
+        } catch (e: IllegalArgumentException) {
+            e.printStackTrace()
+        }
     }
 
     override fun onDestroyView() {
